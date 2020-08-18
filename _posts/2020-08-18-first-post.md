@@ -20,7 +20,9 @@ int main(){
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
+이 [블로그][blog] 통해서 만들었어요! 감사합니다..
+
 [jekyll-docs]: https://jekyllrb.com/docs/home
 [jekyll-gh]:   https://github.com/jekyll/jekyll
 [jekyll-talk]: https://talk.jekyllrb.com/
-[출처]: 이 블로그 통해서 만들었어요! 감사합니다.. https://dreamgonfly.github.io/blog/jekyll-remote-theme/
+[blog]: https://dreamgonfly.github.io/blog/jekyll-remote-theme/
