@@ -7,8 +7,11 @@ categories: jekyll update
 처음 시작하는 블로그
 잘 할수 있을까?
 
+which is shown in the screenshot below:
+![My helpful screenshot](/assets/all_from_tree.png)
 
 Jekyll also offers powerful support for code snippets:
+
 ```cpp
 #include <iostream>
 using namespace std;
