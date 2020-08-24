@@ -1,12 +1,13 @@
 ---
-title: 테스트 포스팅!
+title: "테스트 포스팅!"
 date: 2020-08-18 17:17:28 -0400
-categories: true
+categories: test posting
 ---
 
 > 템플릿!!  
 
-## 백준 - xxxx - 이름
+백준 - xxxx - 이름
+=============
  
 [문제 출처](https://www.acmicpc.net/problem/7576)
 
