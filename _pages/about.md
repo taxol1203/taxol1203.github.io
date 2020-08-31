@@ -1,6 +1,9 @@
 ---
-title: "About"
+title: "이 블로그 설명서"
 permalink: /about/
+layout: single
 ---
 
-I'm a nooby. plz say hello to me.
+## taxol1203.github.io 블로그
+
+이 블로그는 taxol의 창고 블로그이다.
