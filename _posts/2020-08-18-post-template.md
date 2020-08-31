@@ -4,7 +4,7 @@ date: 2020-08-18 17:17:28 -0400
 categories: 
   - algorithm
 tags:
-  - algorithm
+  - template
 ---
 
 > 템플릿!!  

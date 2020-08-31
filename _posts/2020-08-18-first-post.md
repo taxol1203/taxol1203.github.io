@@ -1,7 +1,8 @@
 ---
 title: "첫 시도!"
 date: 2020-08-18 17:17:28 -0400
-categories: jekyll update
+categories: 
+  - jekyll
 ---
 
 처음 시작하는 블로그
