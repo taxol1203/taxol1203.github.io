@@ -1,9 +1,7 @@
 ---
 title: "start post"
-date: 2020-08-31
-tages: [test tag]
-excerpt: "Test for excerpt"
-mathjax: "true"
+date: 2020-08-31 17:17:28 -0400
+categories: jekyll update
 ---
 
 # H1 Heading
@@ -36,7 +34,7 @@ Python code block:
     cout >> "hello world";
 ```
 Here's an image: 
-<img src="{{ site.url }}{{ site.baseurl }}/images/meow.png" alt="linearly separable data">
+![My helpful screenshot](/images/meow.png)
 
 Here's some math:
 
