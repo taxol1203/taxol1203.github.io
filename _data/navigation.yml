@@ -3,7 +3,7 @@ main:
   - title: "About"
     url: /about/
   - title: "Coding Test"
-    url: /categories/algorithm/
+    url: /categories/codingTest/
   - title: "Categories"
     url: /categories/
   - title: "Tags"
