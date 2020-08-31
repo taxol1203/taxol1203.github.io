@@ -3,7 +3,7 @@ main:
   - title: "About"
     url: /about/
   - title: "Coding Test"
-    url: /codingTest/
+    url: /practice-algorithm/
   # - title: "Sample Posts"
   #   url: /year-archive/
   # - title: "Sample Collections"
