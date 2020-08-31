@@ -3,8 +3,6 @@ layout: archive
 permalink: /practice-algorithm/
 title: "My algorithm studying"
 author_profile: true
-header:
-    image: "/images/meow.png"
 ---
 
 {% include base_path %}
