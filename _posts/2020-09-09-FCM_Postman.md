@@ -15,7 +15,7 @@ FCM Push알람을 PostMan을 통하여 쉽게 보내기
 
 안녕하세요. 이 포스트는 FireBase가입, 프로젝트 생성, Android 앱에 Firebase 추가가 완료된 상태라고 전제를 둔 상황에서 작성한 게시글입니다.
 앞서말한 자세한 방법은 [플랫폼 개발팀 기술 블로그]("https://team-platform.tistory.com/17")에서 #2 ~ #3 단계에서 정말 자세히 나와있습니다. 참고하셔서 작성하시고,
-<img src="/images/FCM_PostMan/사진1.png">
+<img src="/images/FCM_PostMan/photo1.png">
  의 테스트가 완료 된 이후에 제 포스트를 봐주세요!
 
 ## 목표
@@ -27,14 +27,14 @@ FCM Push알람을 PostMan을 통하여 쉽게 보내기
 먼저 PostMan을 받으셔야겠죠? [PostMan]("https://www.postman.com/downloads/")에서 받아줍시당!
 
 이후 로그인까지 완료하면, 왼쪽 상단의 NEW! 를 클릭
-<img src="/images/FCM_PostMan/사진2.png">
+<img src="/images/FCM_PostMan/photo2.png">
 Requset를 눌러줍시다.
-<img src="/images/FCM_PostMan/사진3.png">
+<img src="/images/FCM_PostMan/photo3.png">
 원하시는 이름과 그룹을 설정해 주시고
-<img src="/images/FCM_PostMan/사진4.png">
+<img src="/images/FCM_PostMan/photo4.png">
 
 이제 이 화면에 도달합니다!
-<img src="/images/FCM_PostMan/사진5.png">
+<img src="/images/FCM_PostMan/photo5.png">
 
 먼저 이 PostMan 서버가 HTTP 요청을 하려면 FCM 서버로 연결해야겠죠? 따라서
 ```
@@ -47,10 +47,10 @@ Content-Type에 ```application/json```을 넣어주세요!
 
 Firebase 서버 key는 
 `Firebase 콘솔 -> 톱니바퀴 -> 프로젝트 설정 -> 클라우딩 메세지에 있습니당
-<img src="/images/FCM_PostMan/사진7.png">
+<img src="/images/FCM_PostMan/photo7.png">
 
 이후 앞선 과정을 완료하면 이렇게 됩니다
-<img src="/images/FCM_PostMan/사진6.png">
+<img src="/images/FCM_PostMan/photo6.png">
 
 ## 주제 구독 설정
 
@@ -112,8 +112,8 @@ Body에 들어가 Raw 그리고 Json으로 설정한 후
 이제 `send`를 해봅시다. 될까요?
 아 이전에 애플리케이션을 빌드하고 설치 해주셔야하는거 잊지마세요!
 
-<img src="/images/FCM_PostMan/사진8.png">
-<img src="/images/FCM_PostMan/사진10.png">
+<img src="/images/FCM_PostMan/photo8.png">
+<img src="/images/FCM_PostMan/photo10.png">
 넵! 제대로 왔네요!!
 
 이를 통해 PostMan으로 Weather가 구독된 애플리케이션을 FCM 서버에 메세지를 전송하라고 보내, 실제로 수신했다는걸 보았습니다.
