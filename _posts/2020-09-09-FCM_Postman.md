@@ -15,7 +15,9 @@ FCM Push알람을 PostMan을 통하여 쉽게 보내기
 
 안녕하세요. 이 포스트는 FireBase가입, 프로젝트 생성, Android 앱에 Firebase 추가가 완료된 상태라고 전제를 둔 상황에서 작성한 게시글입니다.
 앞서말한 자세한 방법은 [플랫폼 개발팀 기술 블로그]("https://team-platform.tistory.com/17")에서 #2 ~ #3 단계에서 정말 자세히 나와있습니다. 참고하셔서 작성하시고,
+
 <img src="/images/FCM_PostMan/photo1.png">
+
  의 테스트가 완료 된 이후에 제 포스트를 봐주세요!
 
 ## 목표
