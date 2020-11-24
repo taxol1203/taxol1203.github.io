@@ -8,7 +8,7 @@ tags:
   - Android
 ---
 
-안드로이드 - 자바 split() 메소드 점 ( . ) 인식 불가.
+> Android
 ===========
 
 안드로이드를 개발 도중 이메일 string을 분할 해야하는 상황이 생겼습니다.  
@@ -34,7 +34,7 @@ Log.e("Check splited", "end: " + end);
 
 ## 해결 방안 
 
-split(".") 대신에 split("\\.")으로 변경하여 자바가 **.**을 인식하게 해줍니다.
+split(".") 대신에 split("\\\.")으로 변경하여 자바가 **.**을 인식하게 해줍니다.
 
 ``` java
 String willSplit = "hello.hi";
