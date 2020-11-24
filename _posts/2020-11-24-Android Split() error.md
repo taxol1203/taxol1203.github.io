@@ -39,9 +39,13 @@ split(".") 대신에 split("\\.")으로 변경하여 자바가 **.**을 인식�
 ``` java
 String willSplit = "hello.hi";
 String[] a = willSplit.split("\\.");
-String front = a[0];              //오류 발생!!
+String front = a[0];             
 String end = a[1];
 Log.e("Check splited", "front: " + front);
 Log.e("Check splited", "end: " + end);
 
 ```
+
+## 결과 
+
+<img src="/images/Android/android_split.PNG">
