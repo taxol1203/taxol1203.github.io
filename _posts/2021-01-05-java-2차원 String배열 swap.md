@@ -15,7 +15,7 @@ String 배열 Swap
  
 ## 서론
 [사탕게임](https://www.acmicpc.net/problem/3085)을 풀다보니 2차원 String 배열을 입력 받아, 각 배열의 값 char들을 swap하여야 하는 경우가 있었다.  
-
+이를 코드로 정리하여 추후에 사용, 복습하기 위해 스스로 구현하여 정리하였다.
 
 ## 코드
 ```java
@@ -59,6 +59,7 @@ public class Main {
 	}
 	// swap을 진행하는 함수. c1과 c2는 각각 해당 char가 있는 좌표
 	public static String[] swap(String[] temp, int c1_y, int c1_x , int c2_y, int c2_x) {	
+		// 변경하려는 문자의 좌표의 y값이 같을시 == 가로로 교환
 		if(c1_y == c2_y) {
 			StringBuilder chStr = new StringBuilder(temp[c1_y]);
 	        char tmp = temp[c1_y].charAt(c1_x);
@@ -66,6 +67,7 @@ public class Main {
 	        chStr.setCharAt(c2_x, tmp);
 	        temp[c1_y] = chStr.toString();
 		}
+		// 변경하려는 문자의 좌표의 y값이 다를시 == 세로로 교환
 		else {
 			StringBuilder chStr1 = new StringBuilder(temp[c1_y]);
 			StringBuilder chStr2 = new StringBuilder(temp[c2_y]);
