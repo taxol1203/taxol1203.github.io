@@ -1,6 +1,10 @@
 ---
 title: "자바 2차원 String배열 swap"
 date: 2021-01-05 22:31:00 -0400
+toc: true
+toc_sticky: true
+header:
+  teaser: /images/baekjoon.png
 categories: 
   - Language
 tags:

@@ -1,6 +1,10 @@
 ---
 title: "N-queens"
 date: 2020-09-06 15:32:00 -0400
+toc: true
+toc_sticky: true
+header:
+  teaser: /images/baekjoon.png
 categories: 
   - codingTest
 tags:

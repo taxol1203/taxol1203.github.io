@@ -1,6 +1,10 @@
 ---
 title: "테스트 포스팅!"
 date: 2020-08-18 17:17:28 -0400
+toc: true
+toc_sticky: true
+header:
+  teaser: /images/meow.png
 categories: 
   - codingTest
 tags:
