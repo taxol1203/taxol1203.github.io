@@ -1,5 +1,5 @@
 ---
-title: "첫 시도!"
+title: "첫 시도! 및 테스트"
 date: 2020-08-18 17:17:28 -0400
 categories: 
   - jekyll
@@ -20,6 +20,11 @@ int main(){
   return;
 }
 ```
+사진 등록 및 크기 확인
+<img src="/images/codingTest/bj_11726/n_12.PNG" width="40%" height="40%">  
+
+2의 N승 : 2<sup>N</sup>
+로그 2의 N: log<sub>2</sub>N
 
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
