@@ -1,5 +1,5 @@
 ---
-title: "SWEA 1210 - Flatten"
+title: "SWEA 1210 - Ladder1"
 last_modified_at: 2021-02-02 T16:12:00-05:00
 toc: true
 toc_sticky: true
@@ -8,19 +8,18 @@ header:
 categories: 
   - codingTest
 tags:
-  - Sort
   - SWEA
 ---
 
 > Java
 
-1210 번 - Flatten
+1210 번 - Ladder1
 =============
  
 ## 문제
 100 x 100 크기의 2차원 배열로 주어진 사다리에 대해서, 지정된 도착점에 대응되는 출발점 X를 반환하는 코드를 작성하라
 
-[<img src="/images/swea.png" width="80%" height="80%">](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14ABYKADACFAYh)  
+[<img src="/images/swea.png" width="60%" height="60%">](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14ABYKADACFAYh)  
 
 ## 접근 방법
 
@@ -33,11 +32,9 @@ import java.util.*;
 
 class Solution {
 	public static void main(String []args) throws Exception {  
-		//System.setIn(new FileInputStream("res/input.txt"));	//제출 할 때 주석해야함
     	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
     	int result = 0;
     	StringTokenizer st;
-    	//int tc = stoi(br.readLine());
     	// ------------ 초기값 세팅 -------------- 
     	
     	int ladder[][] = new int[100][100];
