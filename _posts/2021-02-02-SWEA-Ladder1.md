@@ -20,7 +20,7 @@ tags:
 ## 문제
 100 x 100 크기의 2차원 배열로 주어진 사다리에 대해서, 지정된 도착점에 대응되는 출발점 X를 반환하는 코드를 작성하라
 
-[![문제 출처]<img src="/images/swea.png" width="40%" height="40%">](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14ABYKADACFAYh)  
+[<img src="/images/swea.png" width="80%" height="80%">](https://swexpertacademy.com/main/code/problem/problemDetail.do?contestProbId=AV14ABYKADACFAYh)  
 
 ## 접근 방법
 
@@ -93,10 +93,6 @@ class Solution {
 ### 난이도
 ⭐⭐★★★
 ### 후기
-단순히 정렬과 탐색으로 풀 수 있는 문제를, 평균을 이용하는 등 머리를 굴리려다 오히려 고생한 문제.  
+
 
 ### 개선할 점
-1. 처음 정렬을 하고 
-2. 양 끝 값을 1씩 증감을 시킨 후
-3. 다시 정렬을 하여 반복하는 간단한 방법도 있다.  
-하지만 위는 매번 정렬을 해야하므로 나의 코드보다 더 시간이 오래 걸리니 정신승리를 한다.  
