@@ -20,7 +20,7 @@ title                    : "Like Taxol"
 title_separator          : "-"
 subtitle                 : # site tagline that appears below site title in masthead
 name                     : "Jooyeon Han"
-description              : "왕 초보 개발자!"
+description              : "잘 부탁드립니다"
 url                      : "https://taxol1203.github.io"
 baseurl                  : "" # the subpath of your site, e.g. "/blog"
 repository               : # GitHub username/repo-name e.g. "mmistakes/minimal-mistakes"
