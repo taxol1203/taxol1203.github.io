@@ -26,6 +26,15 @@ int main(){
 2의 N승 : 2<sup>N</sup>
 로그 2의 N: log<sub>2</sub>N
 
+<details>
+<summary>DFS로 실패한 코드</summary>
+<div markdown="1">
+
+여기에 숨길 내용 작성
+
+</div>
+</details>
+
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
 이 [블로그][blog] 통해서 만들었어요! 감사합니다..
