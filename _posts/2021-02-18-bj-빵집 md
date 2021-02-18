@@ -1,0 +1,120 @@
+---
+title: "백준 3109 - 빵집"
+last_modified_at: 2021-02-18 T13:30:00-05:00
+toc: true
+toc_sticky: true
+header:
+  teaser: /images/baekjoon.png
+categories: 
+  - codingTest
+tags:
+  - Back Tracking
+  - Baek Joon
+---
+
+> Java
+
+3109 번 - 빵집
+=============
+ 
+## 문제
+빵집이 있는 곳은 R*C 격자로 표현할 수 있다. 첫째 열은 근처 빵집의 가스관이고, 마지막 열은 원웅이의 빵집이다.
+
+원웅이는 가스관과 빵집을 연결하는 파이프를 설치하려고 한다. 빵집과 가스관 사이에는 건물이 있을 수도 있다. 건물이 있는 경우에는 파이프를 놓을 수 없다.
+
+가스관과 빵집을 연결하는 모든 파이프라인은 첫째 열에서 시작해야 하고, 마지막 열에서 끝나야 한다. 각 칸은 오른쪽, 오른쪽 위 대각선, 오른쪽 아래 대각선으로 연결할 수 있고, 각 칸의 중심끼리 연결하는 것이다.
+
+원웅이는 가스를 되도록 많이 훔치려고 한다. 따라서, 가스관과 빵집을 연결하는 파이프라인을 여러 개 설치할 것이다. 이 경로는 겹칠 수 없고, 서로 접할 수도 없다. 즉, 각 칸을 지나는 파이프는 하나이어야 한다.
+
+원웅이 빵집의 모습이 주어졌을 때, 원웅이가 설치할 수 있는 가스관과 빵집을 연결하는 파이프라인의 최대 개수를 구하는 프로그램을 작성하시오.
+[<img src="/images/baekjoon.png" width="40%" height="40%">](https://www.acmicpc.net/problem/3109)  
+
+## 접근 방법
+백트래킹으로 접근하여 해결하였다.  
+[0,0] 에서 [n-1,0]까지 세로로 파이프가 놓여있고, 마찬가지로 [0,m-1]에서 [n-1,m-1] 세로로 빵집이 있다.  
+우선 Greedy하게 제일 위에있는 파이프에서 시작하여 빵집까지 [우상, 우, 우하] 셋 중 하나의 길을 선택하여 이동을 한다.  
+칸을 이동 할 때마다, 방문했다는 표시를 하여 다음 파이프에서 현재 방문한 칸을 방문하지 못하도록 표시한다.  
+만약 빵집에 도달 할 수 있으면 결과를 증가한다.  
+
+**주의** 보통의 2차원 배열 탐색을 해결할 때는, 한번 이동한 장소가 결과까지 도달하지 않으면, 다음 경로를 위해 방문하였다는 true를 false로 만들어 주는 작업을 하지만, 이 문제에서는 그럴 필요가 없다.  
+왜냐하면,  
+1. 성공했을 경우  
+현재 경로로 파이프를 설치하여 해당 칸을 차지하게 되기 때문에 막습니다.
+2. 실패했을 경우  
+현재 경로가 아니라 다른 경로로 이 자리에 와도 똑같이 실패할 것입니다. 그러므로 그냥 막은 상태로 둡니다. 일종의 DP로 볼 수 있다.
+[출처](https://www.acmicpc.net/board/view/19046)  
+
+## 코드
+```java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static char[][] map;
+	static boolean[][] vis;
+	static int n,m, result = 0;
+    public static void main(String []args) throws IOException {        
+    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	StringTokenizer stk = new StringTokenizer(br.readLine()); 
+    	n = stoi(stk.nextToken());
+    	m = stoi(stk.nextToken()); 
+    	map = new char[n][m];
+    	vis = new boolean[n][m];
+    	for(int i = 0; i < n; i++) {
+    		String str = br.readLine();
+    		for(int j = 0; j < m; j++)
+    			map[i][j] = str.charAt(j);	
+    	}
+    	// [0,0] 부터 [n-1,0] 까지의 파이프를 한번씩 탐색한다.
+    	for(int i = 0; i < n; i++)
+    		DFS(i,0);
+    	
+    	System.out.println(result);
+    	br.close();
+    }
+    
+    static int[] dy = {-1, 0, 1};	//상우, 우, 하우
+    static int[] dx = {1, 1, 1};
+    static boolean DFS(int y, int x) {
+    	// 방문 할 수 없는 길이거나, 이미 방문하였거나, 건물이 있는 경우 종료한다.
+    	if(y < 0 || x < 0 || y >= n || x >= m || vis[y][x] || map[y][x] == 'x') {
+    		return false;
+    	}
+    	// 원웅의 빵집에 도달하였을 시, 파이프를 연결하였으므로 종료한다.
+    	if(x == m - 1) {
+    		result++;
+    		return true;
+    	}
+    	// 한번 방문한 곳을 재방문 하지 않도록 표시를 한다.  
+    	vis[y][x] = true;
+    	// 우상, 우, 우하로 이동한다.
+    	for(int i = 0; i < 3; i++) {
+    		if(DFS(y + dy[i], x + dx[i])) {		// 성공 하였을시, 계속하여 true를 반환하여 함수를 종료한다
+    			return true;
+    		}
+    	}
+    	
+    	// 방문 했던 길을 false 하여 다음 경로에서 방문하도록 하지 않아도 된다. 
+    	// 왜냐하면, 현재 경로가 아니라 다른 경로로 이 자리에 와도 똑같이 실패하기 때문이다.
+    	/*if(x != 0) {
+    		vis[y][x] = false;
+    	}*/
+    	return false;
+    }
+    
+    static int stoi(String str) {
+    	return Integer.parseInt(str);
+    }
+}
+```
+
+## 총평
+### 난이도
+⭐⭐★★★
+### 후기
+visited를 false 처리를 해주어 오히려 시간초과가 난 문제.  
+또한 의외로 한번만에 구현이 되었다.  
+성공한 길이면, 따로 지도에 표시를 해주어 길이 중첩을 막으려 했는데, 성공시 DFS가 true를 방문해 종료하도록 하여 알아서 다음 경로가 이동할 일이 없어 편하였다.  
+
+### 개선할 점
+없
