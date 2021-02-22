@@ -2,8 +2,8 @@
 main:
   - title: "About"
     url: /about/
-  - title: "Coding Test"
-    url: /categories/codingTest/
+  - title: "Effective Java"
+    url: /categories/Effective_Java/
   - title: "Categories"
     url: /categories/
   - title: "Tags"

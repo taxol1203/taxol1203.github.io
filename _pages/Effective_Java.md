@@ -1,6 +1,6 @@
 ---
 title: "Effective Java"
-permalink: /categories/Effective Java/
+permalink: /categories/Effective_Java/
 layout: category
 author_profile: true
 taxonomy: Effective Java
