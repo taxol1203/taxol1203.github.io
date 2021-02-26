@@ -19,9 +19,9 @@ tags:
 ## 출처
 [Java Garbage Collection](https://d2.naver.com/helloworld/1329)  
 [[cs] java 면접 질문(기술면접 대비)](https://sujinhope.github.io/2019/12/09/CS-Java-%EB%A9%B4%EC%A0%91-%EC%A7%88%EB%AC%B8(%EA%B8%B0%EC%88%A0%EB%A9%B4%EC%A0%91-%EB%8C%80%EB%B9%84).html)  
-[Java - Garbage Collection(GC,가비지 컬렉션) 란?](https://coding-start.tistory.com/206)
+[Java - Garbage Collection(GC,가비지 컬렉션) 란?](https://coding-start.tistory.com/206)  
 [자바 메모리 관리 - 가비지 컬렉션](https://yaboong.github.io/java/2018/06/09/java-garbage-collection/)  
-[Java 의 GC는 어떻게 동작하나?](https://mirinae312.github.io/develop/2018/06/04/jvm_gc.html)
+[Java 의 GC는 어떻게 동작하나?](https://mirinae312.github.io/develop/2018/06/04/jvm_gc.html)  
 [[JVM] Garbage Collection Algorithms](https://medium.com/@joongwon/jvm-garbage-collection-algorithms-3869b7b0aa6f)  
 
 ## Garbage Collection 이란?
