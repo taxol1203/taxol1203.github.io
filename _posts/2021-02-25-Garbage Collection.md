@@ -14,7 +14,7 @@ tags:
 > Garbage Collection
 
 자바 CS 면접을 대비한 미니 세미나를 준비하는 겸, 나중에 복습 할때 참고하여 공부하기 위해 따로 정리하였다.  
-이 글 내용은 멋진 글을 써주신 분들의 블로그 내용들을 취합한 것이므로 먼저 출처를 올리겠습니다.  
+이 글 내용은 좋은 글을 써주신 분들의 블로그 내용들을 취합한 것이므로 먼저 출처를 올리겠습니다.  
 
 ## 출처
 [Java Garbage Collection](https://d2.naver.com/helloworld/1329)  
@@ -22,6 +22,7 @@ tags:
 [Java - Garbage Collection(GC,가비지 컬렉션) 란?](https://coding-start.tistory.com/206)
 [자바 메모리 관리 - 가비지 컬렉션](https://yaboong.github.io/java/2018/06/09/java-garbage-collection/)  
 [Java 의 GC는 어떻게 동작하나?](https://mirinae312.github.io/develop/2018/06/04/jvm_gc.html)
+[[JVM] Garbage Collection Algorithms](https://medium.com/@joongwon/jvm-garbage-collection-algorithms-3869b7b0aa6f)  
 
 ## Garbage Collection 이란?
 Garbage Collection 통칭 GC란 이미 할당된 메모리에서 더 이상 사용하지 않는 메모리를 해제하는 행동을 의미합니다.  
@@ -31,7 +32,7 @@ C 혹은 C++와 달리 Java는 JVM에 의해 자동으로 실행되어, 더 이�
 ## Garbage Collection의 대상
 GC는 무엇을 메모리 해제를 할까요, GC는 Heap영역의 더 이상 쓰지 않는 new 연산자 등으로 생성된 객체(인스턴스)와 배열들의 자원을 회수합니다.  
 ```java
-for (int i = 0; i < 10000; i++) {
+for (int i = 0; i < 10000; i++) {~
   NewObject obj = new NewObject();  
   obj.doSomething();
 }
@@ -43,10 +44,12 @@ for (int i = 0; i < 10000; i++) {
 Garbage Collection은 사용되지 않는 Object, 즉 더 이상 참조되지 않는 Object를 모으는 작업입니다.  
 위에서 말한 GC의 대상들이겠죠.  
 이 Object의 사용 여부는 어떻게 알까요 이는 Root Set과의 관계로 판단하게 되는데, 
-Root Set에서 어떤 식으로든 참조 관계가 있다면 Reachable Object라고 하며 이를 현재 사용하고 있는 Object로 간주하며 그 밖의 Object는 Unreachable Object가 됩니다.  
+[Root Set](https://medium.com/@joongwon/jvm-garbage-collection-algorithms-3869b7b0aa6f)에서 어떤 식으로든 참조 관계가 있다면 Reachable Object라고 하며 이를 현재 사용하고 있는 Object로 간주하며 그 밖의 Object는 Unreachable Object가 됩니다.  
 따라서 GC는 이 Unreachable Objects들을 모으는 것이 되겠습니다.  
 
 <img src="/images/Tech/GC/Unreachable Objects.png" width="50%" height="50%">  
+
+그렇다면 Root Set이란 뭘까요? Root Set을 간단하게 설명하면 객체들 간에 참조 사슬의 시작점이라고 보면 됩니다.  
 
 ## stop-the-world
 우선 GC는 Thread 입니다. GC가 수행 되기 위해선 현재 실행되고 있는 GC의 Thread를 제외한 나머지 쓰레드는 모두 작업을 멈춰야 합니다.  
@@ -55,7 +58,7 @@ Root Set에서 어떤 식으로든 참조 관계가 있다면 Reachable Object�
 
 ## Weak generational hypothesis
 Java에서는 개발자가 프로그램 코드로 메모리를 명시적으로 해제하지 않기 때문에 GC가 더 이상 필요 없는 (쓰레기) 객체를 찾아 지우는 작업을 합니다.  
-Java의 GC는 두가지 가설 하에 만들어 졌습니다.  첫번째로는,  
+Java의 GC는 두가지 가설 하에 만들어 졌습니다. 첫번째로는,  
 ```  
 * 대부분의 객체는 금방 접근 불가능 상태(unreachable, garbage)가 된다.  
 * 오래된 객체에서 젊은 객체로의 참조는 아주 적게 존재한다.  
@@ -64,7 +67,8 @@ Java의 GC는 두가지 가설 하에 만들어 졌습니다.  첫번째로는,
 두번째 가설은 Old 객체가 Young 객체를 참조할 일은 드물다라는 것인데, old 객체와 young 객체는 다음에서 설명 하겠습니다.  
 
 ## Young 영역과 Old 영역
-위 가설을 최대한 살리기 위해서 [HotSpot VM](https://velog.io/@aki/HotSpot-JVM)에서는 크게 2개로 물리적 공간을 나누었는데, 둘로 나눈 공간이 Young 영역과 Old 영역입니다.  
+위 가설에서는 `오래된 객체`라는 말이 나오는데, JVM에서는 이 오래됨(Old) 을 표현하기 위해 메모리를 크게 2개로 물리적 공간을 나누었습니다.  
+이 둘로 나눈 공간이 Young 영역과 Old 영역입니다.  
 <img src="/images/Tech/GC/Young&Old.png" width="50%" height="50%">  
 
 ### Young 영역
@@ -82,9 +86,28 @@ Young 영역은 총 3개의 영역으로 나누어집니다.
 4. 하나의 Survivor 영역이 가득 차게 되면, 그 중에서 살아남은 객체를 비어있는 다른 Survivor 영역으로 이동한다. 이전의 Survivor 영역은 비운다.
 5. 이 과정을 반복하다가 일정 GC 이상 횟수 만큼 살아남은 객체는 Old 영역으로 이동한다.  
 
+<img src="/images/Tech/GC/JVMObjectLifecycle.png" width="50%" height="50%">  
 
+*JVM 메모리 영역(Heap)내에서 객체의 이동*
+다음은 위 5개의 순서를 그림으로 나타낸 것입니다.  
 
 ### Old 영역
 객체가 Unreachable Objects로 되지 않아, Young 영역에서 살아남은 객체가 여기로 복사됩니다.  
-Young 영역보다 메모리는 크게 할당되며 GC가 적게 발생됩니다. 하지만 여기서도 GC는 발생하게 되며, 이 영역에서 객체가 사라질 때 Major GC(혹은 Full GC)가 발생한다고 말합니다.  
+Young 영역보다 메모리는 크게 할당되며 GC가 적게 발생됩니다.  
+Young 보다는 빈도수가 적지만, 데이터가 가득 차면 GC는 발생하게 되며, 이 영역에서 객체가 사라질 때 Major GC(혹은 Full GC)가 발생한다고 말합니다.  
 
+## Card Table
+Minor GC를 진행 할 때, Old 영역에 있는 객체가 Young 영역의 객체를 참조하는 경우 해당 객체는 GC의 대상이 되질 않습니다.  
+따라서 매번 Old 영역에서 Young 영역으로의 참조를 확인해야 하는데, 이는 비효율적이므로 Old 영역에는 512바이트의 덩어리(chunk)로 되어 있는 카드 테이블(card table)이 존재합니다.  
+
+카드 테이블에는 Old 영역에 있는 객체가 Young 영역의 객체를 참조할 때마다 정보가 표시됩니다.  
+Young 영역의 GC를 실행할 때에는 Old 영역에 있는 모든 객체의 참조를 확인하지 않고, 이 카드 테이블만 뒤져서 GC 대상인지 식별합니다.
+
+<img src="/images/Tech/GC/CardTable.png" width="50%" height="50%">  
+
+## Permanent Generation
+Permanent Generation 영역(이하 Perm 영역)은 Method Area라고도 합니다.  
+객체나 억류(intern)된 문자열 정보를 저장하는 곳이며, 이 영역에서도 GC가 발생합니다.  
+여기서 발생한 GC도 Major GC 횟수에 포함됩니다.  
+
+## 정리
