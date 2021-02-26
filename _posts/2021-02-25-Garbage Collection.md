@@ -26,8 +26,8 @@ tags:
 
 ## Garbage Collection 이란?
 Garbage Collection 통칭 GC란 이미 할당된 메모리에서 더 이상 사용하지 않는 메모리를 해제하는 행동을 의미합니다.  
-C 혹은 C++와 달리 Java는 JVM에 의해 자동으로 실행되어, 더 이상 사용되지 않은 객체들을 점검하여 제거하는 아주 편리한 기능입니다.  
-따라서 Java 프로그래머들에게는 메모리를 관리하게 되는 부담이 줄어들게 되었습니다.  
+GC는 Java는 JVM에 의해 자동으로 실행되어, 더 이상 사용되지 않은 객체들을 점검하여 제거하는 아주 편리한 기능입니다.  
+따라서 Java 프로그래머들에게는 C 혹은 C++처럼 메모리를 직접 관리해야 하는 언어와 비교하여, 부담이 줄어들게 되었습니다.  
 
 ## Garbage Collection의 대상
 GC는 무엇을 메모리 해제를 할까요, GC는 Heap영역의 더 이상 쓰지 않는 new 연산자 등으로 생성된 객체(인스턴스)와 배열들의 자원을 회수합니다.  
@@ -76,8 +76,12 @@ Young 영역은 새롭게 생성한 객체의 대부분이 여기에 위치하�
 이 영역에 위치하는 객체들은 대부분 Unreachable Objects가 되며, 여기서 객체가 사라질때 Minor GC가 발생한다고 말합니다.  
 
 Young 영역은 총 3개의 영역으로 나누어집니다.
-* Eden 영역
+
+* Eden 영역  
+Eden Area은 객체 할당만을 위한 전용 공간입니다.
 * Survivor 영역(2개)  
+Survivor Area는 Minor GC 당시 살아남은 객체를 옮기는 공간입니다.  
+Survivor 영역은 중 하나는 반드시 비어 있는 상태로 남아 있어야하며 둘의 영역은 독립적입니다.  
 
 새롭게 생성 된 객체는 Young 영역에서 위치하며, 각 영역의 처리 절차를 순서를 따라 기술하면 다음과 같습니다.  
 1. 새로 생성한 객체는 Eden 영역에 위치합니다.  
@@ -86,9 +90,9 @@ Young 영역은 총 3개의 영역으로 나누어집니다.
 4. 하나의 Survivor 영역이 가득 차게 되면, 그 중에서 살아남은 객체를 비어있는 다른 Survivor 영역으로 이동한다. 이전의 Survivor 영역은 비운다.
 5. 이 과정을 반복하다가 일정 GC 이상 횟수 만큼 살아남은 객체는 Old 영역으로 이동한다.  
 
-<img src="/images/Tech/GC/JVMObjectLifecycle.png" width="50%" height="50%">  
+<img src="/images/Tech/GC/JVMObjectLifecycle.png" width="70%" height="70%">  
 
-*JVM 메모리 영역(Heap)내에서 객체의 이동*
+*JVM 메모리 영역(Heap)내에서 객체의 이동*  
 다음은 위 5개의 순서를 그림으로 나타낸 것입니다.  
 
 ### Old 영역
