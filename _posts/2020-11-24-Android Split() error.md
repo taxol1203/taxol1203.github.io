@@ -48,4 +48,4 @@ Log.e("Check splited", "end: " + end);
 
 ## 결과 
 
-<img src="/images/Android/android_split.PNG">
+<img src="/images/Tech/Android/android_split.PNG">
