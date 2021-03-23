@@ -1,0 +1,127 @@
+---
+title: "백준 1753 - 최단경로"
+last_modified_at: 2021-03-24 T14:09:00-05:00
+toc: true
+toc_sticky: true
+header:
+  teaser: /images/baekjoon.png
+categories: 
+  - codingTest
+tags:
+  - DP
+  - Dijkstra
+---
+
+> Java
+
+1753번 - 최단경로
+=============
+ 
+## 문제
+
+방향그래프가 주어지면 주어진 시작점에서 다른 모든 정점으로의 최단 경로를 구하는 프로그램을 
+작성하시오. 단, 모든 간선의 가중치는 10 이하의 자연수이다.
+
+[<img src="/images/baekjoon.png" width="40%" height="40%">](https://www.acmicpc.net/problem/1753번)  
+
+## 코드
+```java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	
+	static class Node implements Comparable<Node> {
+		int end;
+		int weight;
+		
+		public Node(int end, int weight) {
+			this.end = end;
+			this.weight = weight;
+		}
+		@Override
+		public int compareTo(Node o) {
+			return Integer.compare(weight,o.weight);
+		}
+	}
+	
+	static int v, e, start;
+	static int[] distance;
+	static boolean[] vis;
+	static List<List<Node>> graph;
+	public static void main(String[] args) throws IOException {
+		//System.setIn(new FileInputStream("res/mainInput.txt"));	//제출 할 때 주석해야함
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	StringTokenizer stk = new StringTokenizer(br.readLine());
+    	v = stoi(stk.nextToken());
+    	e = stoi(stk.nextToken());
+    	graph = new ArrayList<List<Node>>();
+    	
+    	distance = new int[v + 1];
+    	vis = new boolean[v + 1];
+    	for(int i = 0; i < v + 1; i++) {
+    		graph.add(new ArrayList<Node>());
+    	}
+    	
+    	start = stoi(br.readLine());
+    	
+    	for(int i = 0; i < e; i++) {
+    		stk = new StringTokenizer(br.readLine());
+    		int st = stoi(stk.nextToken());
+    		int end = stoi(stk.nextToken());
+    		int w = stoi(stk.nextToken());
+    		graph.get(st).add(new Node(end, w));
+    	}
+    	
+    	Arrays.fill(distance, Integer.MAX_VALUE);
+    	distance[start] = 0;
+    	
+    	PriorityQueue<Node> queue=new PriorityQueue<Node>();
+		queue.offer(new Node(start,distance[start]));
+    	
+		while(!queue.isEmpty()){
+			
+			Node current=queue.poll();
+        	
+			int curN = current.end;
+        	if(vis[curN])continue;
+        	
+        	vis[curN]=true; // 선택 정점 방문 처리
+			
+			//step2: current정점을 경유지로 하여 갈수 있는 다른 방문하지 않은 정점들에 대한 처리
+			for(Node node : graph.get(curN)) {
+				if(node.weight + distance[curN] < distance[node.end]) {
+					distance[node.end] = distance[curN] + node.weight;
+	                 queue.add(new Node(node.end, distance[node.end]));
+				}
+			}
+		}
+    	
+    	for(int i = 1; i <= v; i++) {
+    		if(distance[i] != Integer.MAX_VALUE)
+    			System.out.println(distance[i]);
+    		else
+    			System.out.println("INF");
+    	}
+    	br.close();
+	}
+
+	
+	static int stoi(String str) {
+    	return Integer.parseInt(str);
+    }
+}
+```
+
+## 총평
+### 난이도
+⭐⭐⭐⭐⭐
+### 후기
+
+### 개선할 점
+없
+
+<!-- ★
+<img src="/images/codingTest/bj/문제번호.PNG" width="40%" height="40%">  
+
+-->
