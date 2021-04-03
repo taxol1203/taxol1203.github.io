@@ -9,7 +9,7 @@ categories:
   - codingTest
 tags:
   - Back Tracking
-  - Burte Force
+  - Brute Force
 ---
 
 > C++

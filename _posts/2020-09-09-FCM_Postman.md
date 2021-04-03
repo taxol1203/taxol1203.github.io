@@ -4,8 +4,6 @@ date: 2020-09-09 17:45:28 -0400
 categories: 
   - Technology
 tags:
-  - FCM
-  - PostMan
 ---
 
 FCM Push알람을 PostMan을 통하여 쉽게 보내기
