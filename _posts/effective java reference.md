@@ -23,3 +23,8 @@ tags:
 
 ## item 42
 <https://madplay.github.io/post/prefer-lambdas-to-anonymous-classes>
+
+## item 44
+<https://sejoung.github.io/2019/01/2019-01-30-Favor_the_use_of_standard_functional_interfaces/#%EC%95%84%EC%9D%B4%ED%85%9C-44-%ED%91%9C%EC%A4%80%ED%95%A8%EC%88%98%ED%98%95-%EC%9D%B8%ED%84%B0%ED%8E%98%EC%9D%B4%EC%8A%A4%EB%A5%BC-%EC%82%AC%EC%9A%A9%ED%95%98%EB%9D%BC>
+<https://madplay.github.io/post/favor-the-use-of-standard-functional-interfaces>
+<https://javabom.tistory.com/86>
