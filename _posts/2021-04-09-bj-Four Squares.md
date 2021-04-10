@@ -1,6 +1,6 @@
 ---
-title: "백준 17626 - Four Squares"
-last_modified_at: 2021-04-09 T22:46:00-05:00
+title: "백준 1707 - 이분 그래프"
+last_modified_at: 2021-04-10 T11:46:00-05:00
 toc: true
 toc_sticky: true
 header:
@@ -8,19 +8,19 @@ header:
 categories: 
   - codingTest
 tags:
-  - DP
+  - BFS
   - Baek Joon
 ---
-
 > Java
 
-17626 번 - Four Squares
+1707 번 - 이분 그래프
 =============
  
 ## 문제
-자연수 n이 주어질 때, n을 최소 개수의 제곱수 합으로 표현하는 컴퓨터 프로그램을 작성하시오.
-
-[<img src="/images/baekjoon.png" width="40%" height="40%">](https://www.acmicpc.net/problem/17626)    
+그래프의 정점의 집합을 둘로 분할하여, 각 집합에 속한 정점끼리는 서로 인접하지 않도록 분할할 수 있을 때, 그러한 그래프를 특별히 이분 그래프 (Bipartite Graph) 라 부른다.
+  
+그래프가 입력으로 주어졌을 때, 이 그래프가 이분 그래프인지 아닌지 판별하는 프로그램을 작성하시오.
+[<img src="/images/baekjoon.png" width="40%" height="40%">](https://www.acmicpc.net/problem/1707)    
 
 ## 접근 방법
 
@@ -30,39 +30,114 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-	
-	static int n, result = Integer.MAX_VALUE;
-	static int[] dp;
-	static List<Integer> pow;
-    public static void main(String []args) throws IOException {        
-    	BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-    	n = stoi(br.readLine());
-    	dp = new int[n+1];
+	static int v,e, tc;
+	static int[] vColor;
+	static List<List<Integer>> node;
+	public static void main(String[] args) throws IOException {
+		//System.setIn(new FileInputStream("res/mainInput.txt"));	//제출 할 때 주석해야함
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	StringTokenizer stk;
+    	tc = stoi(br.readLine());
     	
-    	pow = new ArrayList<>();
-    	
-    	for(int i = 1; i <= Math.sqrt(n); i++) {
-    		pow.add(i * i);
-    	}
-    	
-    	Arrays.fill(dp,5);
-    	dp[0] = 0;
-    	for(int i = 1; i <= n; i++) {
-    		for(int num : pow) {
-    			if(i - num >= 0) {
-    				dp[i] = Math.min(dp[i - num] + 1, dp[i]);
-    			}
-    			else
-    				break;
+    	for(int idx = 0; idx < tc; idx++) {
+    		boolean isBinary = true;
+    		stk = new StringTokenizer(br.readLine());
+    		v = stoi(stk.nextToken());
+    		e = stoi(stk.nextToken());
+    		
+    		node = new ArrayList<>();
+    		
+    		for(int i = 0; i <= v; i++) {
+    			node.add(new ArrayList<>());
     		}
+    		
+    		int from = 0, to;
+    		for(int i = 0; i < e; i++) {
+    			stk = new StringTokenizer(br.readLine());
+    			from = stoi(stk.nextToken());
+    			to = stoi(stk.nextToken());
+    			node.get(from).add(to);
+    			node.get(to).add(from);
+    		}
+    		
+    		vColor = new int[v+1];
+    		Arrays.fill(vColor, -1);
+    		
+    		isBinary = BFS(from);
+    		
+    		for(int i = 1; i <= v; i++) {
+    			if(vColor[i] == -1) {
+    				if(!BFS(i)) {
+    					isBinary = false;
+    					break;
+    				}
+    			}
+    		}
+    		
+    		if(isBinary)
+    			System.out.println("YES");
+    		else
+    			System.out.println("NO");
     	}
     	
-    	System.out.println(dp[n]);
-
     	br.close();
-    }
+	}
+	
+	static boolean BFS(int from) {
+		boolean isBinary = true;
+		Queue<Vertex> queue = new LinkedList<Main.Vertex>();
+		// false가 색 0, true가 색 1
+		queue.add(new Vertex(from, false));
+		vColor[from] = 0;
+		
+		int curN, curC;
+		Vertex curV;
+		end: while(!queue.isEmpty()) {
+			curV = queue.poll();
+			curN = curV.node;
+			curC = curV.color ? 0 : 1;		// 정점의 색, 현재 색과 반대 색을 넣는다.
+			
+			for(int next : node.get(curN)) {
+				if(vColor[next] == -1) {
+					vColor[next] = curC;
+					queue.add(new Vertex(next,!curV.color));
+				}
+				else {
+					if(vColor[next] != curC) {
+						isBinary = false;
+						break end;
+					}
+				}
+			}
+		}
+		
+		return isBinary;
+	}
+	
+	static class Vertex{
+		int node;
+		boolean color;
+		
+		public Vertex(int node, boolean color) {
+			super();
+			this.node = node;
+			this.color = color;
+		}
+	}
+	
+	
+	static class Node{
+		int from, to;
 
-    static int stoi(String str) {
+		public Node(int from, int to) {
+			super();
+			this.from = from;
+			this.to = to;
+		}
+	}
+	
+	
+	static int stoi(String str) {
     	return Integer.parseInt(str);
     }
 }
