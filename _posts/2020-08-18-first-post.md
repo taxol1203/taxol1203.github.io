@@ -35,6 +35,14 @@ int main(){
 </div>
 </details>
 
+테이블 만들기
+|    | 1  | 2  | 3  | 4  | 5  | 6  | 7  | 8  | 9  | 10 | 11 |
+|----|----|----|----|----|----|----|----|----|----|----|----|
+| T  | 5  | 4  | 3  | 2  | 1  | 1  | 2  | 3  | 4  | 5  | x  |
+| P  | 50 | 40 | 30 | 20 | 10 | 10 | 20 | 30 | 40 | 50 | x  |
+| DP | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  | 0  |
+
+
 Check out the [Jekyll docs][jekyll-docs] for more info on how to get the most out of Jekyll. File all bugs/feature requests at [Jekyll’s GitHub repo][jekyll-gh]. If you have questions, you can ask them on [Jekyll Talk][jekyll-talk].
 
 이 [블로그][blog] 통해서 만들었어요! 감사합니다..
