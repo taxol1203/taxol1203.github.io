@@ -10,7 +10,8 @@ categories:
 tags:
 ---
 
-> OS
+> OS  
+
 Thread & Process 정리
 =============
 ## Process와 Thread의 개념
