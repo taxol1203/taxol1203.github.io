@@ -1,0 +1,115 @@
+---
+title: "백준 4659 - 비밀번호 발음하기"
+last_modified_at: 2021-05-17 T11:16:00-05:00
+toc: true
+toc_sticky: true
+header:
+  teaser: /images/baekjoon.png
+categories:
+  - codingTest
+tags:
+  - Baek Joon
+---
+
+> Java
+
+# 4659 번 - 비밀번호 발음하기
+
+## 문제
+
+[<img src="/images/baekjoon.png" width="40%" height="40%">](https://www.acmicpc.net/problem/4659)
+
+## 접근 방법
+
+1,2,3 조건에 맞게 해결한다.  
+모음을 따로 확인하는 메서드를 사용하여 확인한다.
+
+## 코드
+
+```java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int n, result;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+		String str;
+		boolean canSpeak;
+		while(true) {
+			str = br.readLine();
+			canSpeak = false;
+			if(str.equals("end"))
+				break;
+
+			char curC;
+			int v = 0,c = 0;
+			// 1번 조건
+			for(int i = 0; i < str.length(); i++) {
+				if(isVowel(str.charAt(i))){
+					canSpeak = true;
+					break;
+				}
+			}
+			if(!canSpeak) {
+				System.out.printf("<%s> is not acceptable.\n", str);
+			}else {
+				for(int i = 0; i < str.length(); i++) {
+					curC = str.charAt(i);
+					// 2번 조건
+					if(i != str.length() - 1 && curC == str.charAt(i + 1) && curC != 'o' && curC != 'e') {
+						canSpeak = false;
+						break;
+					}
+					// 3번 조건
+					boolean vowel = isVowel(curC);
+					if(vowel) {
+						v++;
+						c = 0;
+					}
+					else {
+						c++;
+						v = 0;
+					}
+
+					if(v == 3 || c == 3) {
+						canSpeak = false;
+						break;
+					}
+				}
+				// 결과
+				if(canSpeak)
+					System.out.printf("<%s> is acceptable.\n", str);
+				else
+					System.out.printf("<%s> is not acceptable.\n", str);
+			}
+
+		}
+
+    	br.close();
+	}
+
+	static boolean isVowel(char c) {
+		if(c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u')
+			return true;
+		return false;
+	}
+
+	static int stoi(String str) {
+    	return Integer.parseInt(str);
+    }
+}
+```
+
+## 총평
+
+### 후기
+
+단순 조건 따지는 문제는 귀찮다
+
+### 개선할 점
+
+<!-- ★
+<img src="/images/codingTest/bj/문제번호.PNG" width="40%" height="40%">
+
+-->
