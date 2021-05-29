@@ -14,6 +14,14 @@ tags:
 
 ## String
 
+### 문자열 분리 split
+
+```java
+String[] str = br.readLine().split("\\."); // .으로 분리
+```
+
+.은 메타데이터 이므로 \\를 붙혀야 분리가 된다.
+
 ## 순열과 조합
 
 https://coding-factory.tistory.com/606
@@ -83,4 +91,26 @@ void DFS(int lv) {
     sel[lv] = false;
     DFS(lv + 1);
 }
+```
+
+## Map
+
+기본 사용법 - String key에 따라 개수 세기
+
+```java
+Map<String, Integer> map = new HashMap<>();
+
+if(map.containsKey(extend))
+    map.put(extend, map.get(extend) + 1);
+else
+    map.put(extend, 1);
+```
+
+Key 사전 순으로 정렬
+
+```java
+List<Entry<String, Integer>> entry = new ArrayList<>(map.entrySet());
+Collections.sort(entry, (o1, o2)->{
+    return o1.getKey().compareTo(o2.getKey());
+});
 ```
