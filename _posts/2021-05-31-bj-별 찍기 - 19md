@@ -1,0 +1,104 @@
+---
+title: "백준 10994 - 별 찍기 - 19"
+last_modified_at: 2021-05-31 T11:16:00-05:00
+toc: true
+toc_sticky: true
+header:
+  teaser: /images/baekjoon.png
+categories:
+  - codingTest
+tags:
+  - Baek Joon
+---
+
+> Java
+
+# 10994 번 - 별 찍기 - 19
+
+## 문제
+
+[<img src="/images/baekjoon.png" width="40%" height="40%">](https://www.acmicpc.net/problem/10994)
+
+## 접근 방법
+
+패턴의 규칙을 보면, n이 증가할 때 마다 ((n - 1) \* 4) 만큼 개수가 늘어나는 것을 확인 할 수 있다.
+재귀 함수를 이용하여 별을 찍는다.
+
+## 코드
+
+```java
+import java.util.*;
+import java.io.*;
+
+public class Main {
+	static int n, result;
+	static char[][] star;
+	public static void main(String[] args) throws IOException {
+		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+    	StringTokenizer stk;
+    	n = stoi(br.readLine());
+
+    	int num = 1 + ((n - 1) * 4);
+
+    	star = new char[num][num];
+
+		// ' '으로 채워줘야 제대로 표기 된다.
+    	for(int i = 0; i < num; i++)
+    		Arrays.fill(star[i], ' ');
+
+    	makeStar(0,0,n);
+
+    	StringBuilder sb = new StringBuilder();
+    	for(int i = 0; i < star.length; i++) {
+    		for(int j = 0; j < star[0].length; j++) {
+    			sb.append(star[i][j]);
+    		}
+    		sb.append("\n");
+    	}
+    	System.out.println(sb.toString());
+    	br.close();
+	}
+
+	private static void makeStar(int y, int x, int lv) {
+		if(lv == 0)
+			return;
+		int num = 1 + ((lv - 1) * 4);
+		// 위
+		for(int i = 0; i < num; i++) {
+			star[y][x + i] = '*';
+		}
+		// 아래
+		for(int i = 0; i < num; i++) {
+			star[y + num - 1][x + i] = '*';
+		}
+		// 좌
+		for(int i = 0; i < num; i++) {
+			star[y + i][x] = '*';
+		}
+		// 우
+		for(int i = 0; i < num; i++) {
+			star[y + i][x + num - 1] = '*';
+		}
+		makeStar(y + 2, x + 2, lv - 1);
+	}
+
+	static int stoi(String str) {
+    	return Integer.parseInt(str);
+    }
+}
+```
+
+## 총평
+
+### 후기
+
+저번에도 이런 실수를 한 것 같았는데,  
+처음 배열에 ' '로 채워주지 않으면 제대로 나오지 않는다.  
+Eclipse 출력 창에는 제대로 나오는 것 처럼 보이지만, 메모장으로 복사해보면 틀린 것을 확인 할 수있다.
+
+### 개선할 점
+
+<!-- ★
+<img src="/images/codingTest/bj/문제번호.PNG" width="40%" height="40%">
+
+-->
