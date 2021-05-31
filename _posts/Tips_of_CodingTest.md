@@ -114,3 +114,11 @@ Collections.sort(entry, (o1, o2)->{
     return o1.getKey().compareTo(o2.getKey());
 });
 ```
+
+## 자료형 변환
+
+## int to char
+
+```java
+char value_char = (char)(value_int +'0');
+```
