@@ -122,3 +122,17 @@ Collections.sort(entry, (o1, o2)->{
 ```java
 char value_char = (char)(value_int +'0');
 ```
+
+## int to String
+
+```java
+int from = 123;
+String to = Integer.toString(from);
+```
+
+## String to int
+
+```java
+String from = "123";
+int to = Integer.parseInt(from);
+```
