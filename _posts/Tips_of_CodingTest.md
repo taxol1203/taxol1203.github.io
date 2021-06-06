@@ -117,22 +117,38 @@ Collections.sort(entry, (o1, o2)->{
 
 ## 자료형 변환
 
-## int to char
+### int to char
 
 ```java
 char value_char = (char)(value_int +'0');
 ```
 
-## int to String
+### int to String
 
 ```java
 int from = 123;
 String to = Integer.toString(from);
 ```
 
-## String to int
+### String to int
 
 ```java
 String from = "123";
 int to = Integer.parseInt(from);
+```
+
+## GCD, LCM
+
+```java
+int max = Math.max(n, m);
+int min = Math.min(n, m);
+int gcd = GCD(max,min);
+int lcm = (n * m) / gcd;
+
+static int GCD(int max, int min) {
+    if(min == 0)
+        return max;
+    else
+        return GCD(min, max % min);
+}
 ```
