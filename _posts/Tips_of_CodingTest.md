@@ -152,3 +152,20 @@ static int GCD(int max, int min) {
         return GCD(min, max % min);
 }
 ```
+
+## Priority Queue
+
+예시 코드는, 두 수의 절대 값이 작은 순으로 정렬한다.  
+만약 같으면 그 수가 작은 순으로 정렬
+
+```java
+PriorityQueue<Integer> pq = new PriorityQueue<>((o1, o2)->{
+    int a = Math.abs(o1);
+    int b = Math.abs(o2);
+    int comp = Integer.compare(a, b);
+    if(comp == 0)
+        return Integer.compare(o1, o2);
+    else
+        return comp;
+});
+```
