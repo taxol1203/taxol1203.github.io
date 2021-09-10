@@ -18,7 +18,7 @@ jupyter: no module named 해결법
 ```
 The page build failed for the `master` branch with the following error:
 
-The variable `{{1, 1}` on line 24 in `_posts/2021-09-10-pg-프로그래머스 세팅 문제.md` was not properly closed with `}}`. For more information, see https://docs.github.com/github/working-with-github-pages/troubleshooting-jekyll-build-errors-for-github-pages-sites#tag-not-properly-terminated.
+The variable `괄호 괄호 1, 1}` on line 24 in `_posts/2021-09-10-pg-프로그래머스 세팅 문제.md` was not properly closed with `괄호 괄호`. For more information, see https://docs.github.com/github/working-with-github-pages/troubleshooting-jekyll-build-errors-for-github-pages-sites#tag-not-properly-terminated.
 
 For information on troubleshooting Jekyll see:
 
@@ -30,7 +30,7 @@ https://docs.github.com/articles/troubleshooting-jekyll-builds
 코드를 찾아보니 2차원 배열을 입력하기 위해 넣은 코드가 문제였다.  
 
 ```java
-int[][] v = {{1, 1}, {2, 2}, {1, 2}};
+int[][] v = 괄호괄호1, 1}, {2, 2}, {1, 2괄호괄호;
 ```
 
 ## 결론
