@@ -34,7 +34,7 @@ class AlbumView(APIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
 
-찾아보니,  GenericApiView를 사용하면 model과 swagger post parameter 연동이 가능하다고 되어있다.  
+찾아보니,  GenericApiView를 사용하면 model과 Swagger의 post parameter 연동이 가능하다고 되어있다.  
 
 [출처 : stackoverflow](https://stackoverflow.com/questions/41104615/how-can-i-specify-the-parameter-for-post-requests-while-using-apiview-with-djang)
 
