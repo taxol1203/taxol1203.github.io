@@ -41,10 +41,10 @@ class AlbumView(APIView):
 따라서 GenericApiView를 적용하였다.  
 
 ```python
-class AlbumView(GenericAPIView):
+class AlbumView(GenericAPIView):    # GenericAPIView로 변경
 
-    queryset = Album.objects.all()  # Generic Api View는 반드시 포함 해야함
-    serializer_class = AlbumSerializer
+    queryset = Album.objects.all()      # Generic Api View는 반드시 포함 해야한다.
+    serializer_class = AlbumSerializer  # 추가한다
 
     def get(self, request, format=None):
         albums = Album.objects.all()
