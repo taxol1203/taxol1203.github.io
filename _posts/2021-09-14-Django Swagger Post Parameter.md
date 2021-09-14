@@ -14,7 +14,7 @@ Django Swagger Post Parameter 없는 현상 해결법
 ## 문제
 Swagger의 Post에 Parameters를 넣는 곳이 없다.  
 
-<img src="/images/Tech/Django/post_1.png" width="40%" height="40%">  
+<img src="/images/Tech/Django/post_1.png" width="100%" height="100%">  
 
 현재 코드는 다음과 같다.  
 
@@ -59,6 +59,6 @@ class AlbumView(GenericAPIView):
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 ```
 
-<img src="/images/Tech/Django/post_2.png" width="40%" height="40%">  
+<img src="/images/Tech/Django/post_2.png" width="100%" height="100%">  
 
 성공
