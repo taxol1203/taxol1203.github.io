@@ -36,7 +36,7 @@ class AlbumView(APIView):
 
 찾아보니,  GenericApiView를 사용하면 model과 Swagger의 post parameter 연동이 가능하다고 되어있다.  
 
-[출처 : stackoverflow](https://stackoverflow.com/questions/41104615/how-can-i-specify-the-parameter-for-post-requests-while-using-apiview-with-djang)
+[출처 : StackOverflow](https://stackoverflow.com/questions/41104615/how-can-i-specify-the-parameter-for-post-requests-while-using-apiview-with-djang)
 
 따라서 GenericApiView를 적용하였다.  
 
