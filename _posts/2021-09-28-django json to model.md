@@ -97,7 +97,7 @@ TMDB의 영화 데이터를 json 형태로 파싱하였다.
 
 ## model.py
 
-우선 Movie talbe을 만들자
+우선 Movie table을 만들자
 
 ```python
 class Movie(models.Model):
@@ -135,3 +135,6 @@ def get_movie_data(self):
     return HttpResponse('Success convert json to database')
 
 ```
+
+## References
+[StackOverflow](https://stackoverflow.com/questions/34825875/json-data-convert-to-the-django-model)  
