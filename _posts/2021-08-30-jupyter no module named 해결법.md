@@ -9,7 +9,7 @@ tags:
 > python
 
 jupyter: no module named 해결법
-===========
+===========2021-09-28-bj-django_json_to_model
 
 ## 문제
 Jupyter를 실행하고 import를 하는 과정에서 제목과 같은 오류가 발생하였다.  
