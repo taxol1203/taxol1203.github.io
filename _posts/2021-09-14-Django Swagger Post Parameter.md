@@ -4,6 +4,7 @@ date: 2021-09-14 17:45:28 -0400
 categories: 
   - Technology
 tags:
+  - Django
 ---
 
 > python

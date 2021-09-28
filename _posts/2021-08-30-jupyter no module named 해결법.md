@@ -4,11 +4,12 @@ date: 2021-08-30 17:45:28 -0400
 categories: 
   - Technology
 tags:
+  - Django
 ---
 
-> python
+> Django
 
-jupyter: no module named 해결법
+Django - jupyter: no module named 해결법
 ===========2021-09-28-bj-django_json_to_model
 
 ## 문제
