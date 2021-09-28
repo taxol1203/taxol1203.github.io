@@ -1,6 +1,6 @@
 ---
 title: "Djagno ORM을 사용하여 json 파일을 database에 저장하기 with postgres"
-date: 2021-08-30 17:45:28 -0400
+date: 2021-09-28 17:45:28 -0400
 categories: 
   - Technology
 tags:
