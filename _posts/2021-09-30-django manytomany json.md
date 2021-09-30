@@ -45,7 +45,7 @@ class GenreSerializer(serializers.ModelSerializer):
 
 
 class MovieSerializer(serializers.ModelSerializer):
-    genres = GenreSerializer(read_only=True, many=True)
+    genres = GenreSerializer(read_only=True, many=True) # 장르 데이터도 직렬화, many=True는 여러 genre가 들어온다는 뜻.
 
     class Meta:
         model = Movie
