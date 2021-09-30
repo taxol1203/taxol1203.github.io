@@ -105,6 +105,46 @@ def get_movie(request, pk):
 }
 ```
 
+## 추가
+
+만약, `genre`의 상세 데이터가 필요하지 않고 연결 되어있는 `genre`의 `pk`만 필요하면 `MovieSerializer` 내의 `GenreSerializer`만 제거해 주시면 됩니다.
+
+대신, `MovieSerializer`의 `field`에 Movie와 Genre의 ManyToMany 관계에서 `relation_name`만 추가해주시면 됩니다.  
+
+```python
+class GenreSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Genre
+        fields = '__all__'
+
+
+class MovieSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
+        read_only_fields = ('genres',)      # Movie model에서 default로 설정 된 relation_name
+```
+
+### 결과
+
+```json
+{
+  "id": 69848,
+  "movie_id": "140",
+  "original_title": "La mala educación",
+  "overview": "28살의 감독 ‘엔리케’ 앞에 어느 날 어린 시절 신학교 친구였던 ‘이나시오’가 배우가 되어 나타난다. 재회한 기쁨도 잠시, 이제부터 자신을 앙겔(천사)이라고 불러 달라는 이나시오가 낯설게만 느껴지는 엔리케. 이나시오는 자신들의 어린 시절과 당시 그들에게 ‘나쁜 교육’을 행한 마놀로 신부를 향한 증오와 복수, 음모와 살인에 관해 쓴 ‘방문객’이란 시나리오를 엔리케에게 건네는데…",
+  "release_date": "2004-03-19",
+  "poster_path": "/gUsYU7sw32Vs3wSxlJZWUesj1FK.jpg",
+  "genres": [
+    43,
+    45,
+    51,
+    52,
+    55
+  ]
+}
+```
 
 ## References
 [StackOverflow](https://darrengwon.tistory.com/480)  
