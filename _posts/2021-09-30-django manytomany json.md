@@ -107,7 +107,7 @@ def get_movie(request, pk):
 
 ## 추가
 
-만약, `genre`의 상세 데이터가 필요하지 않고 연결 되어있는 `genre`의 `pk`만 필요하면 `MovieSerializer` 내의 `GenreSerializer`만 제거해 주시면 됩니다.
+만약, `genre`의 상세 데이터가 필요하지 않고 연결 되어있는 `genre`의 `pk`만 필요하면 `MovieSerializer` 내의 `GenreSerializer`만 제거해 주시면 됩니다.   
 
 대신, `MovieSerializer`의 `field`에 Movie와 Genre의 ManyToMany 관계에서 `relation_name`만 추가해주시면 됩니다.  
 
@@ -147,4 +147,4 @@ class MovieSerializer(serializers.ModelSerializer):
 ```
 
 ## References
-[StackOverflow](https://darrengwon.tistory.com/480)  
+[DRF serializers를 통해 장고 객체를 json으로 만들기](https://darrengwon.tistory.com/480)  
