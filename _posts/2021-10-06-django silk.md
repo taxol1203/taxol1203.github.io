@@ -114,14 +114,14 @@ Silk 라이브러리를 사용하는 방법은 Django의 swagger나 직접 url�
 
 이는 2가지 문제가 있었으며 각각 해결하니 정상적으로 나왔다.  
 
-1. 장고 버젼 문제
+- 장고 버젼 문제
 
 지금까지 사용하였던 장고 버젼은 `3.2`였다.  
 따라서, 장고 버젼을 `3.1`로 낮추었다.  
 
 [Silk shows 0 time for all queries?](https://github.com/jazzband/django-silk/issues/442#issuecomment-814920147)    
 
-2. profiling directory 경로 문제  
+- profiling directory 경로 문제  
 결과가 표시되지 않는 이유는, profile을 한 후 그 결과를 저장할 디렉토리 경로와 폴더가 지정되지 않아서 이다.  
 
 따라서, `setting.py` 최 상단에 다음과 같이 추가하였다.  
@@ -135,11 +135,12 @@ SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'profiles') # 추가
 
 이후 디렉토리 root위치에 profiles 폴더를 추가하여 결과를 저장한다.  
 
-<img src="/images/Tech/Django/silk3.png" width="100%" height="100%">   
+<img src="/images/Tech/Django/silk3.png" width="50%" height="50%">   
 
 ## 결과
 
-4시간의 노력 끝에 성공했다.  
+4시간의 노력 끝에 성공했다.   
+
 <img src="/images/Tech/Django/silk2.png" width="100%" height="100%">   
 
 ## References
