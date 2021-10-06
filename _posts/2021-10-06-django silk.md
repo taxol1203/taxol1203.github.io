@@ -92,6 +92,26 @@ python manage.py migrate
 python manage.py collectstatic
 ```
 
+## views.py
+
+특정 메서드를 profiling 하고 싶다면 데코레이터를 사용한다.  
+
+```python
+from silk.profiling.profiler import silk_profile
+
+@api_view(['GET'])
+@silk_profile(name='View get movie data')
+def get_genre_rec_movies(self):
+  # 내가 수행하고 싶은 무언가
+```
+
+그리고 읽을 수 있게 `setting.py`에도 설정을 추가한다.
+
+```python
+SILKY_PYTHON_PROFILER = True
+SILKY_PYTHON_PROFILER_BINARY = True
+```
+
 ## 사용
 
 이제 설치는 끝났다.  
@@ -119,6 +139,10 @@ Silk 라이브러리를 사용하는 방법은 Django의 swagger나 직접 url�
 지금까지 사용하였던 장고 버젼은 `3.2`였다.  
 따라서, 장고 버젼을 `3.1`로 낮추었다.  
 
+```
+pip install "django<3.2"
+```
+
 [Silk shows 0 time for all queries?](https://github.com/jazzband/django-silk/issues/442#issuecomment-814920147)    
 
 - profiling directory 경로 문제  
@@ -142,6 +166,10 @@ SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'profiles') # 추가
 4시간의 노력 끝에 성공했다.   
 
 <img src="/images/Tech/Django/silk2.png" width="100%" height="100%">   
+
+특정 메서드를 profiling도 가능하다.  
+
+<img src="/images/Tech/Django/silk4.png" width="100%" height="100%">   
 
 ## References
 
