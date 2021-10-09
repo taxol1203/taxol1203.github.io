@@ -161,6 +161,8 @@ SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'profiles') # 추가
 
 <img src="/images/Tech/Django/silk3.png" width="50%" height="50%">   
 
+[Profiling is not working](https://github.com/jazzband/django-silk/issues/269)      
+
 ## 결과
 
 4시간의 노력 끝에 성공했다.   
@@ -169,7 +171,7 @@ SILKY_PYTHON_PROFILER_RESULT_PATH = os.path.join(BASE_DIR, 'profiles') # 추가
 
 특정 메서드를 profiling도 가능하다.  
 
-<img src="/images/Tech/Django/silk4.png" width="100%" height="100%">   
+<img src="/images/Tech/Django/silk4.png" width="50%" height="50%">   
 
 ## References
 
