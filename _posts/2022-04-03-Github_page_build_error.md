@@ -1,6 +1,6 @@
 ---
 title: "Github Page Build error 해결"
-last_modified_at: 2022-03-30 T11:16:00-05:00
+last_modified_at: 2022-04-03 T11:16:00-05:00
 toc: true
 toc_sticky: true
 header:
@@ -35,7 +35,9 @@ github-pages 225 | Error:  Liquid syntax error (line 79): Variable '{{2,2,5,4}' 
 ### liquid
 
 `Liquid`는 Ruby 기반의 오픈소스 HTML 템플릿 언어이다.  
+{% raw %}
 따라서, Liquid가 `{{ }}`를 인식하여 해당 오류가 발생한 것이다.
+{% endraw %}
 
 [Liquid Exception: Liquid syntax error](https://github.com/jekyll/jekyll/issues/5458)
 
