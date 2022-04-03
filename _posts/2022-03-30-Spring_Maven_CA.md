@@ -45,49 +45,43 @@ Maven 인증서가 없어, 해당 오류가 발생하였다고 판단하여 인�
 ## 해결
 
 1. 문제가 되는 메이븐 저장소에 접속한다.
+   [https://repo1.maven.apache.org/maven2/](https://repo.maven.apache.org/maven2/) 에 접속
 
-[https://repo1.maven.apache.org/maven2/](https://repo.maven.apache.org/maven2/) 에 접속
-
-<img src="/images/Tech/Spring/20220330/Untitled.png" width="50%" height="50%">
+  <img src="/images/Tech/Spring/20220330/Untitled.png" width="50%" height="50%">
 
 2. 해당 페이지 상단에 자물쇠 클릭한다. (Chrome 기준이다. )
 
-<img src="/images/Tech/Spring/20220330/Untitled 1.png" width="50%" height="50%">
+  <img src="/images/Tech/Spring/20220330/Untitled 1.png" width="50%" height="50%">
 
 3. 인증서 복사
 
-<img src="/images/Tech/Spring/20220330/Untitled 2.png" width="50%" height="50%">
+  <img src="/images/Tech/Spring/20220330/Untitled 2.png" width="50%" height="50%">
 
 4. base 64 인코딩
 
-<img src="/images/Tech/Spring/20220330/Untitled 3.png" width="50%" height="50%">
+  <img src="/images/Tech/Spring/20220330/Untitled 3.png" width="50%" height="50%">
 
 5. keystore 등록
 
-<img src="/images/Tech/Spring/20220330/Untitled 4.png" width="50%" height="50%">
-
-```
-keytool -import -file D:\lottechem\maven\repo.cer -keystore D:\lottechem\repoKeystore
-```
-
-주의 : jre가 설치되어있는 경로로 가서, 해당 .cer 파일을 통해 keystore을 등록한다.
+  <img src="/images/Tech/Spring/20220330/Untitled 4.png" width="50%" height="50%">
+  ```
+  keytool -import -file D:\lottechem\maven\repo.cer -keystore D:\lottechem\repoKeystore
+  ```
+  주의 : jre가 설치되어있는 경로로 가서, 해당 .cer 파일을 통해 keystore을 등록한다.
 
 6. 파일 확인
 
-<img src="/images/Tech/Spring/20220330/Untitled 5.png" width="50%" height="50%">
-
-방금 만든 Keystore를 확인한다.
+  <img src="/images/Tech/Spring/20220330/Untitled 5.png" width="50%" height="50%">  
+  방금 만든 Keystore를 확인한다.
 
 7. maven 실행
 
-<img src="/images/Tech/Spring/20220330/Untitled 6.png" width="50%" height="50%">
-
-D:\lottechem\tools\apache-maven-3.5.0-bin\bin\mvn clean install "-Djavax.net.ssl.trustStore=D:\lottechem\maven\repoKeystore"
-
-주의 : pom.xml이 있는 경로로 가서 maven을 실행 한다. 여기서 인자를 방금 만든 keyStore를 적용한다.
+  <img src="/images/Tech/Spring/20220330/Untitled 6.png" width="50%" height="50%">
+  D:\lottechem\tools\apache-maven-3.5.0-bin\bin\mvn clean install "-Djavax.net.ssl.trustStore=D:\lottechem\maven\repoKeystore"   
+  주의 : pom.xml이 있는 경로로 가서 maven을 실행 한다. 여기서 인자를 방금 만든 keyStore를 적용한다.
 
 8. 빌드
 
-<img src="/images/Tech/Spring/20220330/Untitled 7.png" width="50%" height="50%">
+  <img src="/images/Tech/Spring/20220330/Untitled 7.png" width="50%" height="50%">
 
 성공!
