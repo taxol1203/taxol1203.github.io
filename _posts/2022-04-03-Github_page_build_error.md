@@ -25,10 +25,14 @@ Jekyll 깃허브 페이지에 Post를 올리는 과정에서 다음과 같이 Bu
 바로 해당 Build 로그 기록을 확인하여 오류 원인을 확인하였다.
 
 ```
+{% raw %}
 github-pages 225 | Error:  Liquid syntax error (line 79): Variable '{{2,2,5,4}' was not properly terminated with regexp: /\}\}/
+{% endraw %}
 ```
 
+{% raw %}
 알고리즘 풀이 내용 중 2차원 배열을 선언하는 과정에서 `{{ }}`가 있었고, 이것이 문제가 되었다.
+{% endraw %}
 
 해당 내용을 제거하기만 하면 해결되지만, 원인을 조금 더 파악해 보았다.
 
