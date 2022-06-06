@@ -1,5 +1,5 @@
 ---
-title: "Could not autowire. No beans of '' type found - Test Class"
+title: "Could not autowire. No beans of '' type found_Test Class"
 date: 2022-06-06 17:45:28 -0400
 categories:
   - Technology
