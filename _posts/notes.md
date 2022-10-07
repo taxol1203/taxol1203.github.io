@@ -15,33 +15,36 @@ https://github.com/backtony/Backend_Interview_for_Beginner/blob/master/Java.md
 
 ## 백엔드 정리
 
-1. DB 선택
-   기본적으로 Rdbms를 쓰되, 위치데이터는 위도 경도를 저장하므로 rdbms를 사용하여도 좋다.
-   단, 위치 데이터를 조회하는 성능을 고려하여 RDBMS를 정한다.
-   -> 우리 비즈니스에 적합안 DB를 선정
-
-2. 기술 선택
-   MSA(spring cloud), WEBFLUX <-> jpa,
-
 김재의 의견
 다음 회의 전까지 각자 고민해봐요
 
-1. RDB 선택 (MySQL, PostgreSQL ...)
+## RDB 선택 (MySQL, PostgreSQL ...)
+RDB를 어떤 것을 선택하는 지는 어떻게 위치 데이터를 저장할 것인가에 달려있다.  
+위치데이터는 정형 데이터이지만 대량 입력이 주로 되므로 로그성 데이터인 비 정형으로도 볼 수 있다.  
+> 연산가능하면 정형 데이터이며, 형태가 있으나 연산가능하지 않으면 반정형 데이터에 속한다(로그, SNS)
 
-- PostgreSQL 의 경우 geospatial 기능이 강력함(MySQL 과 PostgreSQL 의 자세한 성능 비교는 추후 문서로 정리 필요)
-- 우리 서비스는 특성상 위치데이터를 다루는 경우가 많을 것
-- 위치데이터를 어떤 데이터베이스에 저장할지에 앞서서 어떤 형태로 저장할지도 고민이 필요
-- 위치데이터 하나하나마다 위,경도 뿐만 아니라 속도, 가속도 등 그 순간의 다양한 센서값이 포함될 것
-- 한 번의 러닝이 보통 수백~수천개의 데이터를 생산하고 위치데이터의 저장과 조회는 러닝의 단위로 일어날 것이므로 저장, 조회의 단위는 단건보다는 대량으로 생각
-- 또한 수정보다는 입력이 압도적으로 많을 것(이렇게보니 로그성 데이터의 성격이 짙다.)
-- 위같은 위치데이터는 메인 DB 와는 따로 생각해도 좋을 듯 한데 어떤 DB 가 적합할지? (NoSQL 을 사용한다면 Mongo? ElasticSearch?)
+### Mysql vs PostgreSql
+Mysql은 단순한 읽기에 강점을 보이고, PostgreSql은 대규모 데이터 베이스와 복잡한 쿼리를 사용할 때 강점을 보인다.  
+![image](https://user-images.githubusercontent.com/38308337/194551491-5ad0b6db-3bf5-4f01-9ab7-4556c98ee918.png)
+[우아한 형제](https://techblog.woowahan.com/6550/)
+[Integraate](https://www.integrate.io/ko/blog/postgresql-vs-mysql-the-critical-differences-ko/)
 
-2. Spring
+### 그 외
+MSA를 사용할 시, DB를 분리하여  
+러닝 기록 서비스에서는 Nosql, 그 외 데이터는 RDB를 사용하는 방안도 존재  
 
+## Spring
 - 서버 프레임워크는 스프링을 사용하게 될텐데 스프링에서 꼭 사용했으면 하는 기술이 있는지? (Jpa, QueryDSL, Webflux, Spring cloud ...)
-- QueryDSL
+저는 Kotlin을 써서 개발하는데도 큰 도전이라 생각되어,    
+Kotlin, jpa 더 하고자하면 MSA를 도전하고싶다.  
 
-- [WebFlux + R2DBC] VS [WebMVC+JPA]
+### QueryDSL
+
+https://tecoble.techcourse.co.kr/post/2021-08-08-basic-querydsl/
+
+쭉 읽어 봤는데, JPA 사용할 줄 알면 충분히 사용 가능하다고 봅니다. 강추
+
+### [WebFlux + R2DBC] VS [WebMVC+JPA]
 GET API 성능을 비교시, WebFlux+R2DBC가 WebMVC+JPA 대비 480% 향상되었음을 확인
 [WebFlux+R2DBC 와 WebMVC+JPA 성능 대결](https://www.manty.co.kr/bbs/detail/develop?id=198&scroll=comment)
 
@@ -67,13 +70,22 @@ JPA도 개인적으로 프로젝트를 수행하며 익히고 싶은 생각이 �
 3. 그 외에 꼭 경험해봤으면 하는 기술이 있는지?
 
 - AWS, GCP, Azure 가 제공해주는 특성 기술들
-- 서버, DB 모니터링
-- 부하 테스트
-- MSA
+
+
+### 서버, DB 모니터링
+
+### 부하 테스트
+
+nGrinder vs Jmeter
+Jmeter가 오래되었고, nGrinder가 네이버에서 만들었네요,, 
+둘 중 사용하기 쉬운거 쓰면 될듯?
+
+### MSA
 
 MSA를 번거롭고 귀찮은 작업이지만 요즘 기업들은 기본적으로 MSA를 선호하므로 시도해 보는 것을 좋다고 생각
 
 MSA 를 동기로 할 시 부하가 생겨 WEBFLUX를 도입하면 좋다는 이야기가 있네요
 https://ok4u.tistory.com/238
+
 
 
