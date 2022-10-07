@@ -39,6 +39,30 @@ https://github.com/backtony/Backend_Interview_for_Beginner/blob/master/Java.md
 2. Spring
 
 - 서버 프레임워크는 스프링을 사용하게 될텐데 스프링에서 꼭 사용했으면 하는 기술이 있는지? (Jpa, QueryDSL, Webflux, Spring cloud ...)
+- QueryDSL
+
+- [WebFlux + R2DBC] VS [WebMVC+JPA]
+GET API 성능을 비교시, WebFlux+R2DBC가 WebMVC+JPA 대비 480% 향상되었음을 확인
+[WebFlux+R2DBC 와 WebMVC+JPA 성능 대결](https://www.manty.co.kr/bbs/detail/develop?id=198&scroll=comment)
+
+성능면으로만 보면 WebFlux를 쓰는 것이 맞을 수 있지만, 반레도 존재
+
+```
+Webflux 프로젝트의 비지니스 로직들이 모두 Async + NonBlocking 으로 되어있다면 빠를 것. (DB connector, 외부 API 호출 등)
+하지만 하나라도 Sync or Blocking 된 부분이 있거나, CPU 를 많이 쓰는 코드가 들어있다면 MVC보다 느릴 것으로 예상
+
+2. blocking 로직이 들어가더라도 MVC 보다 빠를까? 
+느리다. blocking 이 하나라도 들어가면 MVC가 더 빠르다.
+```
+https://blog.naver.com/joebak/222008524688
+
+Spring MVC의 blocking과 WebFlux의 Non blocking
+https://pearlluck.tistory.com/726
+
+Kotlin과의 조합은 WebFlux가 좋지만,   
+JPA도 개인적으로 프로젝트를 수행하며 익히고 싶은 생각이 크다.    
+또한 아직 WebFlux 보다는 Spring MVC가 It 업계에서 많이 사용되는 것 같음(뇌피셜)  
+
 
 3. 그 외에 꼭 경험해봤으면 하는 기술이 있는지?
 
@@ -46,3 +70,10 @@ https://github.com/backtony/Backend_Interview_for_Beginner/blob/master/Java.md
 - 서버, DB 모니터링
 - 부하 테스트
 - MSA
+
+MSA를 번거롭고 귀찮은 작업이지만 요즘 기업들은 기본적으로 MSA를 선호하므로 시도해 보는 것을 좋다고 생각
+
+MSA 를 동기로 할 시 부하가 생겨 WEBFLUX를 도입하면 좋다는 이야기가 있네요
+https://ok4u.tistory.com/238
+
+
