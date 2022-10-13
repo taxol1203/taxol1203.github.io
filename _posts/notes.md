@@ -5,7 +5,15 @@ https://github.com/backtony/Backend_Interview_for_Beginner/blob/master/Java.md
 
 1. Wrapper Class
 
+이점.
+- 각 객체에 대한 자신의 상태를 객체 스스로 관리할 수 있다.  
+  User 클래스에 나이를 저장하는 값을 int 기본타입이 아닌 Wrapper class로 저장하면,
+  유효성 검증을 User 클래스가 아닌 나이 Int Wrapper Class가 검증할 수 있어 책임이 분리 할 수 있다.
+  [이점1](https://tecoble.techcourse.co.kr/post/2020-05-29-wrap-primitive-type/)
+  
 2. Collection에서 Wrapper Class를 사용하는 이유
+
+ArrayList 등과 같은 Collection의 데이터 구조는 기본 타입이 아닌 객체만 저장하게 되고, Wrapper class를 사용하여 자동박싱/언박싱이 일어난다.
 
 3. static
 
