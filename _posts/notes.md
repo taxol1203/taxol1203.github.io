@@ -21,6 +21,16 @@ ArrayList 등과 같은 Collection의 데이터 구조는 기본 타입이 아�
 
 5. main에 static을 쓰는 이유
 
+## 11st
+
+### solr
+자바 언어로 구현 된 오픈소스 기반의 검색 플랫폼
+
+그리고 제가 사용해 본 solr는 search기능과 indexing기능이 아주 잘 되어있는 또다른 DB라는 생각이 들었습니다.
+solr에도 DB처럼 쿼리, index, table, column이 있고 이것들은 DB의 개념과 유사하게 사용됩니다.
+
+https://raspberrypi98.tistory.com/m/93
+
 ## 백엔드 정리
 
 김재의 의견
