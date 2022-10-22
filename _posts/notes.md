@@ -114,4 +114,5 @@ https://ok4u.tistory.com/238
 
 ## 나중에 공부하고 정리 할 것
 
-java의 collections 시간복잡도
+- java의 collections 시간복잡도
+- collection의 generic은 항상 reference type만 들어가는 이유
