@@ -445,6 +445,9 @@ class LoginController(
 
 ## 결과
 
+구글, 카카오 로그인을 성공하면, db에 각 서비스에 등록된 이름(닉네임), 이메일을 받아와 저장합니다.  
+<img src="/images/Tech/Spring/20230118/Oauth_result.png" width="50%" height="50%">
+
 ## 전체 코드
 
 마지막으로 서비스를 구현한 전체 프로젝트 입니다.
