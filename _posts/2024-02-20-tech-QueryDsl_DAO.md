@@ -11,11 +11,10 @@ tags:
 ---
 
 > QueryDSL에서 왜 Entity로 리턴을 받을 수 없을까
-I'm back
+
+추후 정리
 
 ## 전체 코드
 
-마지막으로 서비스를 구현한 전체 프로젝트 입니다.
-[OAuthLogin Example](https://github.com/taxol1203/OAuthLoginExample)
 
 ## 출처
