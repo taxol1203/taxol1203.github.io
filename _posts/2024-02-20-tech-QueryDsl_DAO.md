@@ -12,8 +12,9 @@ tags:
 
 > QueryDSL의 Select 방법
 
-- Projections.bean
-- 
+- 프로퍼티 접근
+- 필드 직접 접근 
+- @QueryProjection
 
 ## 전체 코드
 
