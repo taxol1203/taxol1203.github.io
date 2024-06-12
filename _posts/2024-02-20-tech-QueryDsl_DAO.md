@@ -1,5 +1,5 @@
 ---
-title: "QueryDSLì˜ Select ë°©ë²•"
+title: "QueryDSLÀÇ Select ¹æ¹ý"
 last_modified_at: 2024-02-30 T11:44:00-05:00
 toc: true
 toc_sticky: true
@@ -10,14 +10,14 @@ categories:
 tags:
 ---
 
-> QueryDSLì˜ Select ë°©ë²•
+> QueryDSLÀÇ Select ¹æ¹ý
 
-- í”„ë¡œí¼í‹° ì ‘ê·¼
-- í•„ë“œ ì§ì ‘ ì ‘ê·¼ 
+- ÇÁ·ÎÆÛÆ¼ Á¢±Ù
+- ÇÊµå Á÷Á¢ Á¢±Ù 
 - @QueryProjection
 
-## ì „ì²´ ì½”ë“œ
+## ÀüÃ¼ ÄÚµå
 
 
-## ì¶œì²˜
+## ÃâÃ³
 https://pyoungt.tistory.com/215
