@@ -42,7 +42,9 @@ https://4sii.tistory.com/625
 
 https://bobcares.com/blog/mac-brew-nginx-error-256/
 
-" nginx -t
+```
+nginx -t
+```
 
 로 원인파악을 해보니, crt, key 인증 파일들을 확인하지 못하여 오류가 발생한 것이다.
 
