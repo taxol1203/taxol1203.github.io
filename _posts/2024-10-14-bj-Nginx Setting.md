@@ -27,13 +27,16 @@ ps -ef | grep nginx
 
 **확인 방법2. sudo brew services list 로 조회**
 
-- > nginx error 256 root /Library/LaunchDaemons/homebrew.mxcl.nginx.plist
+``````
+sudo brew services list
+``````
+-> nginx error 256 root /Library/LaunchDaemons/homebrew.mxcl.nginx.plist
 
 으로 실행 안됨
 
 <img src="/images/Tech/Nginx/first/1.png">
 
-원인 :
+### 원인
 
 https://4sii.tistory.com/625
 
@@ -54,8 +57,8 @@ nginx: configuration file /opt/homebrew/etc/nginx/nginx.conf test failed
 ```
 <img src="/images/Tech/Nginx/first/2.png">
 
-
-- > nginx.conf 파일의 인증서 경로를 정상적으로 연결하니 문제없이 실행 됨
+### 해결
+nginx.conf 파일의 인증서 경로를 정상적으로 연결하니 문제없이 실행 됨
 
 sudo brew services list
 
