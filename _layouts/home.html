@@ -4,13 +4,15 @@ layout: archive
 
 {{ content }}
 
-<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].recent_posts | default: "Recent Posts" }}</h3>
+<h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].category_posts | default: "Technology Posts" }}</h3>
 
-{% if paginator %}
+<!-- {% if paginator %}
   {% assign posts = paginator.posts %}
 {% else %}
   {% assign posts = site.posts | where: "categories", "technology" %}
-{% endif %}
+{% endif %} -->
+
+{% assign posts = site.posts | where: "categories", "technology" %}
 
 {% assign entries_layout = page.entries_layout | default: 'list' %}
 <div class="entries-{{ entries_layout }}">
