@@ -2,23 +2,38 @@
 layout: archive
 ---
 
-{{ content }}
+{% assign category_posts = site.posts | where: "categories", "technology" %}
+{% assign posts_per_page = 5 %} <!-- 페이지당 표시할 게시물 수 -->
+{% assign total_pages = category_posts.size | divided_by: posts_per_page | plus: 1 %}
+{% assign page_num = page.page_num | default: 1 %}
+{% assign start_index = posts_per_page | times: page_num | minus: posts_per_page %}
+{% assign end_index = posts_per_page | times: page_num %}
 
 <h3 class="archive__subtitle">{{ site.data.ui-text[site.locale].category_posts | default: "Technology Posts" }}</h3>
 
-<!-- {% if paginator %}
-  {% assign posts = paginator.posts %}
-{% else %}
-  {% assign posts = site.posts | where: "categories", "technology" %}
-{% endif %} -->
-
-{% assign posts = site.posts | where: "categories", "technology" %}
-
-{% assign entries_layout = page.entries_layout | default: 'list' %}
-<div class="entries-{{ entries_layout }}">
-  {% for post in posts %}
-    {% include archive-single.html type=entries_layout %}
+<div class="entries-list">
+  {% for post in category_posts %}
+    {% if forloop.index > start_index and forloop.index <= end_index %}
+      {% include archive-single.html type='list' %}
+    {% endif %}
   {% endfor %}
 </div>
 
-{% include paginator.html %}
+<!-- Pagination Navigation -->
+<nav class="pagination">
+  <ul>
+    {% if page_num > 1 %}
+      <li><a href="{{ page.url | replace: page_num, page_num | minus: 1 }}">Previous</a></li>
+    {% endif %}
+    {% for i in (1..total_pages) %}
+      {% if i == page_num %}
+        <li><span class="current">{{ i }}</span></li>
+      {% else %}
+        <li><a href="{{ page.url | replace: page_num, i }}">{{ i }}</a></li>
+      {% endif %}
+    {% endfor %}
+    {% if page_num < total_pages %}
+      <li><a href="{{ page.url | replace: page_num, page_num | plus: 1 }}">Next</a></li>
+    {% endif %}
+  </ul>
+</nav>
